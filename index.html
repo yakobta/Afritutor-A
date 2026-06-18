@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
@@ -112,7 +112,7 @@
                 <div class="message assistant">
                     <div class="message-avatar"><i class="fas fa-robot"></i></div>
                     <div class="message-bubble">
-                        <div class="message-content">🌍 <strong>Selam! ሰላም! Jambo! Hello!</strong><br><br>I'm <strong>AfriTutor AI</strong>, your personal AI tutor for the Ethiopian New Curriculum.<br><br>📚 <strong>I can help you with:</strong><br>• Any subject from Grade 6 to University<br>• Explaining difficult concepts in simple terms<br>• Code-switching (English + Amharic + Kiswahili)<br>• Generating practice questions and quizzes<br>• Step-by-step problem solving<br><br>🎯 <strong>Try asking me:</strong><br>• "What is photosynthesis?"<br>• "Explain cell division in Amharic"<br>• "Help me solve 2x + 5 = 15"<br>• "What are the causes of soil erosion in Ethiopia?"<br><br><em>Type your question below 👇</em></div>
+                        <div class="message-content">🌍 <strong>Selam! ሰላም! Jambo! Hello!</strong><br><br>I'm <strong>AfriTutor AI</strong>, your personal AI tutor for the Ethiopian New Curriculum. I'm here to help you master any subject from Grade 6 to University Freshman level!<br><br>📚 Ask me about anything: Biology, Mathematics, Physics, Chemistry, History, Geography, English, or any other subject.<br>🔬 I can explain concepts, help solve problems, and generate quizzes.<br>🌐 I support code-switching between English, Amharic, and Kiswahili!<br><br>What would you like to learn today?</div>
                         <div class="message-time">Just now</div>
                     </div>
                 </div>
@@ -180,9 +180,9 @@
 
     <!-- QUIZZES PAGE -->
     <div id="quizzes" class="page">
-        <div class="page-header"><div class="header-badge"><i class="fas fa-puzzle-piece"></i><span>Test Your Knowledge</span></div><h1>Adaptive Quizzes</h1><p>AI-powered questions that adapt to your skill level</p></div>
+        <div class="page-header"><div class="header-badge"><i class="fas fa-puzzle-piece"></i><span>Test Your Knowledge</span></div><h1>Adaptive Quizzes</h1><p>AI-powered questions that adapt to your level</p></div>
         <div class="quiz-controls glass-card">
-            <div class="control-group"><label>Subject</label><select id="quizSubject" class="form-input"><option value="biology">Biology</option><option value="mathematics">Mathematics</option><option value="physics">Physics</option><option value="chemistry">Chemistry</option><option value="history">History</option><option value="geography">Geography</option></select></div>
+            <div class="control-group"><label>Subject</label><select id="quizSubject" class="form-input"><option value="biology">Biology</option><option value="mathematics">Mathematics</option><option value="physics">Physics</option><option value="history">History</option></select></div>
             <div class="control-group"><label>Difficulty Level</label><input type="range" id="quizDifficulty" min="0" max="100" value="50"><div class="difficulty-labels"><span>Easy</span><span>Medium</span><span>Hard</span></div></div>
             <button class="primary-btn" id="generateQuizBtn"><i class="fas fa-magic"></i> Generate Quiz</button>
         </div>
@@ -192,42 +192,42 @@
 
     <!-- ASSESSMENT PAGE -->
     <div id="assessment" class="page">
-        <div class="page-header"><div class="header-badge"><i class="fas fa-chart-line"></i><span>Performance Tracking</span></div><h1>Assessment & Grading</h1><p>Automated grading and competency tracking</p></div>
-        <div class="assessment-grid"><div class="glass-card"><h3><i class="fas fa-robot"></i> AI Grader</h3><textarea id="essayInput" rows="6" placeholder="Paste student answer for AI grading..."></textarea><button class="primary-btn" onclick="gradeEssay()"><i class="fas fa-check-circle"></i> Grade Now</button><div id="gradingResult" class="grading-result"></div></div><div class="glass-card"><h3><i class="fas fa-tree"></i> Competency Tracking</h3><div id="competencyTable"></div></div></div>
+        <div class="page-header"><div class="header-badge"><i class="fas fa-chart-line"></i><span>Performance Tracking</span></div><h1>Assessment & Grading</h1><p>Automated grading and competency analysis</p></div>
+        <div class="assessment-grid"><div class="glass-card"><h3><i class="fas fa-robot"></i> AI Grader</h3><textarea id="essayInput" rows="6" placeholder="Paste student answer for AI grading..."></textarea><button class="primary-btn" onclick="gradeEssay()"><i class="fas fa-brain"></i> Grade with AI</button><div id="gradingResult" style="margin-top:1rem;color:var(--primary)"></div></div><div class="glass-card"><h3><i class="fas fa-tasks"></i> Competency Tracker</h3><div id="competencyTable"></div></div></div>
     </div>
 
     <!-- ANALYTICS PAGE -->
     <div id="analytics" class="page">
         <div class="page-header"><div class="header-badge"><i class="fas fa-chart-pie"></i><span>Data Insights</span></div><h1>Learning Analytics</h1><p>Track your progress and identify areas for improvement</p></div>
         <div class="analytics-stats"><div class="analytics-card glass-card"><div class="analytics-number" id="predictiveRisk">0%</div><div class="analytics-label">Dropout Risk</div></div><div class="analytics-card glass-card"><div class="analytics-number" id="engagementRate">0%</div><div class="analytics-label">Engagement Rate</div></div><div class="analytics-card glass-card"><div class="analytics-number" id="curriculumEfficacy">0%</div><div class="analytics-label">Curriculum Efficacy</div></div></div>
-        <div class="charts-container"><div class="chart-card glass-card"><h3>Performance Trend</h3><canvas id="performanceChart"></canvas></div><div class="chart-card glass-card"><h3>Subject Mastery Heatmap</h3><canvas id="heatmapChart"></canvas></div></div>
+        <div class="charts-container"><div class="chart-card glass-card"><h3>Performance Trend</h3><canvas id="performanceChart"></canvas></div><div class="chart-card glass-card"><h3>Subject Mastery</h3><canvas id="heatmapChart"></canvas></div></div>
     </div>
 
     <!-- SETTINGS PAGE -->
     <div id="settings" class="page">
         <div class="page-header"><div class="header-badge"><i class="fas fa-cog"></i><span>Preferences</span></div><h1>Settings</h1><p>Customize your AfriTutor AI experience</p></div>
-        <div class="settings-container"><div class="glass-card"><h3><i class="fas fa-palette"></i> Appearance</h3><div class="setting-item"><label>Dark / Light Mode</label><label class="toggle"><input type="checkbox" id="darkModeToggle" checked><span class="slider"></span></label></div><div class="setting-item"><label>Font Size</label><select id="fontSizeSelect" class="form-input"><option value="small">Small</option><option value="medium" selected>Medium</option><option value="large">Large</option></select></div></div><div class="glass-card"><h3><i class="fas fa-language"></i> Language Preferences</h3><div class="setting-item"><label>AI Response Language</label><select id="languageSelect" class="form-input"><option value="english">English only</option><option value="amharic">Amharic only (አማርኛ)</option><option value="mixed" selected>Code-Switching (Recommended)</option></select></div></div><div class="glass-card"><h3><i class="fas fa-database"></i> Data & Privacy</h3><div class="setting-item"><label>Low Data Mode</label><label class="toggle"><input type="checkbox" id="dataSaverToggle" checked><span class="slider"></span></label></div><div class="setting-item"><label>Auto-Delete History (30 days)</label><label class="toggle"><input type="checkbox" id="autoDeleteToggle"><span class="slider"></span></label></div></div><div class="settings-actions"><button class="secondary-btn" id="resetSettingsBtn"><i class="fas fa-undo"></i> Reset to Defaults</button><button class="primary-btn" id="saveSettingsBtn"><i class="fas fa-save"></i> Save Changes</button></div></div>
+        <div class="settings-container"><div class="glass-card"><h3><i class="fas fa-palette"></i> Appearance</h3><div class="setting-item"><label>Dark / Light Mode</label><label class="toggle"><input type="checkbox" id="darkModeToggle" checked><span class="slider"></span></label></div></div><div class="glass-card"><h3><i class="fas fa-bell"></i> Notifications</h3><div class="setting-item"><label>Enable Notifications</label><label class="toggle"><input type="checkbox" checked><span class="slider"></span></label></div></div><div class="glass-card"><h3><i class="fas fa-download"></i> Data</h3><button class="primary-btn small" id="saveSettingsBtn"><i class="fas fa-save"></i> Save Settings</button><button class="secondary-btn small" id="resetSettingsBtn"><i class="fas fa-refresh"></i> Reset All</button></div></div>
     </div>
 
     <!-- ABOUT PAGE -->
     <div id="about" class="page">
         <div class="page-header"><div class="header-badge"><i class="fas fa-info-circle"></i><span>About Us</span></div><h1>About AfriTutor AI</h1><p>Built for Ethiopian students, by Ethiopian builders</p></div>
-        <div class="about-grid"><div class="glass-card"><div class="about-icon">🎯</div><h3>Our Mission</h3><p>Quality education for every Ethiopian student, in their mother tongue. No one left behind.</p></div><div class="glass-card"><div class="about-icon">🧠</div><h3>Technology</h3><p>Graph RAG + Multi-Agent AI + Ethiopian curriculum knowledge graph. Built for low-bandwidth.</p></div><div class="glass-card"><div class="about-icon">👥</div><h3>The Build 2026</h3><p>Pan-African team building across borders. Six weeks. Ship every week. Build in public.</p></div></div>
+        <div class="about-grid"><div class="glass-card"><div class="about-icon">🎯</div><h3>Our Mission</h3><p>Quality education for every Ethiopian student, in their mother tongue. No one left behind.</p></div><div class="glass-card"><div class="about-icon">🔬</div><h3>Our Focus</h3><p>Ethiopian New Curriculum (Grades 6-12 & University Freshman) with AI-powered personalized learning.</p></div><div class="glass-card"><div class="about-icon">🌐</div><h3>Languages</h3><p>English, Amharic, and Kiswahili with code-switching support for better understanding.</p></div></div>
     </div>
 
-    <footer class="footer"><div class="footer-content"><div class="footer-logo"><i class="fas fa-graduation-cap"></i><span>AfriTutor AI</span></div><div class="footer-links"><a href="#">Privacy Policy</a><a href="#">Terms of Use</a><a href="#">Contact</a></div><div class="footer-copyright"><p>© 2026 AfriTutor AI | Ethiopian New Curriculum | የኢትዮጵያ አዲስ ሥርዓተ ትምህርት</p></div></div></footer>
+    <footer class="footer"><div class="footer-content"><div class="footer-logo"><i class="fas fa-graduation-cap"></i><span>AfriTutor AI</span></div><div class="footer-links"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">Contact Us</a><a href="#">About Us</a></div><div class="footer-copyright"><p>© 2026 AfriTutor AI | Ethiopian New Curriculum | የኢትዮጵያ አዲስ ሥርዓተ ትምህርት</p></div></div></footer>
 </div>
 
 <!-- Subject Detail Modal -->
-<div id="subjectDetailModal" class="modal"><div class="modal-content"><div class="modal-header"><h2 id="modalSubjectTitle"></h2><button class="modal-close" onclick="closeSubjectModal()">&times;</button></div><div id="modalSubjectContent"></div><div class="modal-actions"><button class="primary-btn" onclick="startSubjectLesson()"><i class="fas fa-play"></i> Start Lesson</button><button class="secondary-btn" onclick="takeSubjectQuiz()"><i class="fas fa-puzzle-piece"></i> Take Quiz</button><button class="secondary-btn" onclick="downloadSubjectResource()"><i class="fas fa-download"></i> Download</button></div></div></div>
+<div id="subjectDetailModal" class="modal"><div class="modal-content"><div class="modal-header"><h2 id="modalSubjectTitle"></h2><button class="modal-close" onclick="closeSubjectModal()">&times;</button></div><div id="modalSubjectContent"></div><div class="modal-actions"><button class="primary-btn" onclick="startLesson()"><i class="fas fa-play"></i> Start Lesson</button><button class="secondary-btn" onclick="takeQuiz()"><i class="fas fa-puzzle-piece"></i> Take Quiz</button><button class="secondary-btn" onclick="downloadTextbook()"><i class="fas fa-download"></i> Download Textbook</button><button class="secondary-btn" onclick="watchVideo()"><i class="fas fa-video"></i> Watch Video</button></div></div></div>
 
 <!-- Login Modal -->
 <div id="loginModal" class="modal"><div class="modal-content"><h2>Login to AfriTutor AI</h2><input type="email" id="loginEmail" class="form-input" placeholder="Email"><input type="password" id="loginPassword" class="form-input" placeholder="Password"><button class="primary-btn" id="doLoginBtn">Login</button><button class="secondary-btn" onclick="closeModals()">Cancel</button></div></div>
 
 <!-- Signup Modal -->
-<div id="signupModal" class="modal"><div class="modal-content"><h2>Create Account</h2><input type="text" id="signupName" class="form-input" placeholder="Full Name"><input type="email" id="signupEmail" class="form-input" placeholder="Email"><input type="password" id="signupPassword" class="form-input" placeholder="Password"><select id="signupGrade" class="form-input"><option value="grade6">Grade 6</option><option value="grade7">Grade 7</option><option value="grade8">Grade 8</option><option value="grade9">Grade 9</option><option value="grade10">Grade 10</option><option value="natural">Grade 11-12 Natural</option><option value="social">Grade 11-12 Social</option><option value="university">University Freshman</option></select><button class="primary-btn" id="doSignupBtn">Sign Up</button><button class="secondary-btn" onclick="closeModals()">Cancel</button></div></div>
+<div id="signupModal" class="modal"><div class="modal-content"><h2>Create Account</h2><input type="text" id="signupName" class="form-input" placeholder="Full Name"><input type="email" id="signupEmail" class="form-input" placeholder="Email"><input type="password" id="signupPassword" class="form-input" placeholder="Password"><button class="primary-btn" id="doSignupBtn">Sign Up</button><button class="secondary-btn" onclick="closeModals()">Cancel</button></div></div>
 
 <script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.128.0/build/three.module.js"}}</script>
-<script type="module" src="script.js"></script>
+<script type="module" src="js/app.js"></script>
 </body>
 </html>
