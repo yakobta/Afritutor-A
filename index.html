@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="AfriTutor AI - Complete Ethiopian New Curriculum Platform with AI Tutor">
+    <meta name="keywords" content="Ethiopian curriculum, AI tutor, education, grades 6-12, university, Amharic, English">
+    <meta name="author" content="AfriTutor AI">
+    <title>AfriTutor AI - Ethiopian New Curriculum Platform</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="ethiopia-bar">
+    <div class="green"></div>
+    <div class="yellow"></div>
+    <div class="red"></div>
+</div>
+
+<div id="canvas-container"></div>
+
+<div class="app-wrapper">
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">
+            <div class="logo-icon"><i class="fas fa-graduation-cap"></i></div>
+            <span class="logo-text">AfriTutor AI</span>
+            <span class="logo-badge">Ethiopia</span>
+        </div>
+        <div class="nav-links">
+            <button class="nav-btn active" data-page="home"><i class="fas fa-home"></i> Home</button>
+            <button class="nav-btn" data-page="tutor"><i class="fas fa-robot"></i> AI Tutor</button>
+            <button class="nav-btn" data-page="subjects"><i class="fas fa-book"></i> Subjects</button>
+            <button class="nav-btn" data-page="resources"><i class="fas fa-database"></i> Resources</button>
+            <button class="nav-btn" data-page="quizzes"><i class="fas fa-puzzle-piece"></i> Quizzes</button>
+            <button class="nav-btn" data-page="assessment"><i class="fas fa-chart-line"></i> Assessment</button>
+            <button class="nav-btn" data-page="analytics"><i class="fas fa-chart-pie"></i> Analytics</button>
+            <button class="nav-btn" data-page="settings"><i class="fas fa-cog"></i> Settings</button>
+            <button class="nav-btn" data-page="about"><i class="fas fa-info-circle"></i> About</button>
+        </div>
+        <div class="user-menu">
+            <button class="login-btn" id="loginBtn"><i class="fas fa-sign-in-alt"></i> Login</button>
+            <button class="signup-btn" id="signupBtn"><i class="fas fa-user-plus"></i> Sign Up</button>
+            <div class="user-avatar" id="userAvatar" style="display:none">
+                <i class="fas fa-user"></i>
+                <span class="user-name" id="userNameDisplay"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HOME PAGE -->
+    <div id="home" class="page active-page">
+        <div class="page-header">
+            <div class="header-badge"><i class="fas fa-graduation-cap"></i><span>Ethiopian New Curriculum</span></div>
+            <h1 class="gradient-text">Welcome to AfriTutor AI</h1>
+            <p>Your intelligent learning companion for Grades 6-12 and University Freshman courses</p>
+        </div>
+        
+        <div class="hero-section">
+            <div class="hero-stats">
+                <div class="hero-stat"><span class="hero-number">200+</span><span class="hero-label">Subjects</span></div>
+                <div class="hero-stat"><span class="hero-number">7</span><span class="hero-label">Grade Levels</span></div>
+                <div class="hero-stat"><span class="hero-number">24/7</span><span class="hero-label">AI Tutor</span></div>
+            </div>
+            <div class="hero-buttons">
+                <button class="primary-btn large" onclick="navigateToPage('tutor')"><i class="fas fa-robot"></i> Talk to AI Tutor</button>
+                <button class="secondary-btn large" onclick="navigateToPage('subjects')"><i class="fas fa-book-open"></i> Explore Curriculum</button>
+            </div>
+        </div>
+        
+        <div class="section-title"><h2><i class="fas fa-rocket"></i> Quick Access</h2><p>Jump directly to your grade level</p></div>
+        <div class="quick-access-grid">
+            <div class="quick-card" onclick="goToGrade('grade6')"><div class="quick-icon">📘</div><div class="quick-title">Grade 6</div><div class="quick-desc">Primary School</div></div>
+            <div class="quick-card" onclick="goToGrade('grade7')"><div class="quick-icon">📙</div><div class="quick-title">Grades 7-8</div><div class="quick-desc">Middle School</div></div>
+            <div class="quick-card" onclick="goToGrade('grade9')"><div class="quick-icon">📕</div><div class="quick-title">Grades 9-10</div><div class="quick-desc">General Secondary</div></div>
+            <div class="quick-card" onclick="goToGrade('natural')"><div class="quick-icon">🔬</div><div class="quick-title">Natural Science</div><div class="quick-desc">Grades 11-12</div></div>
+            <div class="quick-card" onclick="goToGrade('social')"><div class="quick-icon">🌍</div><div class="quick-title">Social Science</div><div class="quick-desc">Grades 11-12</div></div>
+            <div class="quick-card" onclick="goToGrade('university')"><div class="quick-icon">🎓</div><div class="quick-title">University</div><div class="quick-desc">Freshman Courses</div></div>
+        </div>
+        
+        <div class="learning-path glass-card">
+            <div class="path-progress"><div class="path-progress-bar" id="learningPathProgress" style="width:0%"></div></div>
+            <div class="path-stats">
+                <div class="path-stat"><span class="path-value" id="completedSubjects">0</span><span class="path-label">Completed Subjects</span></div>
+                <div class="path-stat"><span class="path-value" id="totalXp">0</span><span class="path-label">XP Points</span></div>
+                <div class="path-stat"><span class="path-value" id="currentStreak">0</span><span class="path-label">Day Streak</span></div>
+                <div class="path-stat"><span class="path-value" id="masteryLevel">0</span><span class="path-label">Mastery %</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- AI TUTOR PAGE -->
+    <div id="tutor" class="page">
+        <div class="page-header">
+            <div class="header-badge"><i class="fas fa-robot"></i><span>24/7 AI Assistant</span></div>
+            <h1>AI Tutor</h1>
+            <p>Ask me anything about the Ethiopian curriculum. I speak English, Amharic, and Kiswahili!</p>
+        </div>
+        
+        <div class="tutor-container glass-card">
+            <div class="tutor-header">
+                <div class="tutor-avatar"><i class="fas fa-robot"></i></div>
+                <div class="tutor-info"><h3>AfriTutor AI Assistant</h3><p>Online • Ready to help</p></div>
+                <div class="tutor-actions"><button id="clearChatBtn" class="icon-btn" title="Clear chat"><i class="fas fa-trash-alt"></i></button></div>
+            </div>
+            
+            <div class="tutor-messages" id="tutorMessages">
+                <div class="message assistant">
+                    <div class="message-avatar"><i class="fas fa-robot"></i></div>
+                    <div class="message-bubble">
+                        <div class="message-content">🌍 <strong>Selam! ሰላም! Jambo! Hello!</strong><br><br>I'm <strong>AfriTutor AI</strong>, your personal AI tutor for the Ethiopian New Curriculum.<br><br>📚 <strong>I can help you with:</strong><br>• Any subject from Grade 6 to University<br>• Explaining difficult concepts in simple terms<br>• Code-switching (English + Amharic + Kiswahili)<br>• Generating practice questions and quizzes<br>• Step-by-step problem solving<br><br>🎯 <strong>Try asking me:</strong><br>• "What is photosynthesis?"<br>• "Explain cell division in Amharic"<br>• "Help me solve 2x + 5 = 15"<br>• "What are the causes of soil erosion in Ethiopia?"<br><br><em>Type your question below 👇</em></div>
+                        <div class="message-time">Just now</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tutor-input-area">
+                <div class="input-wrapper">
+                    <textarea id="tutorInput" placeholder="Type your question... (e.g., 'Explain photosynthesis' or 'What is a cell?')" rows="1"></textarea>
+                    <button id="voiceInputBtn" class="voice-btn" title="Voice input (Beta)"><i class="fas fa-microphone"></i></button>
+                </div>
+                <button id="sendMessageBtn" class="send-btn"><i class="fas fa-paper-plane"></i> Send</button>
+            </div>
+            
+            <div class="tutor-footer">
+                <span><i class="fas fa-language"></i> Code-switching enabled</span>
+                <span><i class="fas fa-microchip"></i> AI-powered responses</span>
+                <span><i class="fas fa-shield-alt"></i> Curriculum-aligned</span>
+            </div>
+        </div>
+        
+        <div class="suggested-questions">
+            <h3><i class="fas fa-lightbulb"></i> Suggested Questions</h3>
+            <div class="suggestions-grid">
+                <button class="suggestion-btn" onclick="askQuestion('What is photosynthesis?')">🌿 What is photosynthesis?</button>
+                <button class="suggestion-btn" onclick="askQuestion('Explain cell division in Amharic')">🔬 Explain cell division in Amharic</button>
+                <button class="suggestion-btn" onclick="askQuestion('What are the causes of soil erosion in Ethiopia?')">🌱 Soil erosion causes in Ethiopia</button>
+                <button class="suggestion-btn" onclick="askQuestion('Solve: 2x + 5 = 15')">📐 Solve: 2x + 5 = 15</button>
+                <button class="suggestion-btn" onclick="askQuestion('Tell me about the history of Axum')">📜 History of Axum</button>
+                <button class="suggestion-btn" onclick="askQuestion('Generate a quiz on Biology')">📝 Generate Biology quiz</button>
+                <button class="suggestion-btn" onclick="askQuestion('What is the capital of Ethiopia?')">📍 Capital of Ethiopia</button>
+                <button class="suggestion-btn" onclick="askQuestion('Explain Newton\'s laws of motion')">⚡ Newton's laws</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- SUBJECTS PAGE -->
+    <div id="subjects" class="page">
+        <div class="page-header">
+            <div class="header-badge"><i class="fas fa-book-open"></i><span>Ethiopian New Curriculum</span></div>
+            <h1>All Subjects</h1>
+            <p>Complete breakdown from Grade 6 to University Freshman</p>
+        </div>
+        <div class="filter-bar">
+            <button class="filter-btn active" data-filter="all">📚 All Grades</button>
+            <button class="filter-btn" data-filter="grade6">📘 Grade 6</button>
+            <button class="filter-btn" data-filter="grade7">📙 Grades 7-8</button>
+            <button class="filter-btn" data-filter="grade9">📕 Grades 9-10</button>
+            <button class="filter-btn" data-filter="natural">🔬 Natural Science</button>
+            <button class="filter-btn" data-filter="social">🌍 Social Science</button>
+            <button class="filter-btn" data-filter="uniNatural">🎓 University Natural</button>
+            <button class="filter-btn" data-filter="uniSocial">🏛️ University Social</button>
+        </div>
+        <div id="subjectsContainer"></div>
+        <div class="textbook-section glass-card">
+            <div class="textbook-header"><h3><i class="fas fa-book"></i> Ethiopian Textbooks & Resources</h3><p>Official curriculum materials from the Ministry of Education</p></div>
+            <div class="textbook-grid" id="textbookGrid"></div>
+        </div>
+    </div>
+
+    <!-- RESOURCES PAGE -->
+    <div id="resources" class="page">
+        <div class="page-header"><div class="header-badge"><i class="fas fa-database"></i><span>Learning Materials</span></div><h1>Study Resources</h1><p>Free textbooks, video lessons, and practice materials</p></div>
+        <div class="resources-grid" id="resourcesGrid"></div>
+    </div>
+
+    <!-- QUIZZES PAGE -->
+    <div id="quizzes" class="page">
+        <div class="page-header"><div class="header-badge"><i class="fas fa-puzzle-piece"></i><span>Test Your Knowledge</span></div><h1>Adaptive Quizzes</h1><p>AI-powered questions that adapt to your skill level</p></div>
+        <div class="quiz-controls glass-card">
+            <div class="control-group"><label>Subject</label><select id="quizSubject" class="form-input"><option value="biology">Biology</option><option value="mathematics">Mathematics</option><option value="physics">Physics</option><option value="chemistry">Chemistry</option><option value="history">History</option><option value="geography">Geography</option></select></div>
+            <div class="control-group"><label>Difficulty Level</label><input type="range" id="quizDifficulty" min="0" max="100" value="50"><div class="difficulty-labels"><span>Easy</span><span>Medium</span><span>Hard</span></div></div>
+            <button class="primary-btn" id="generateQuizBtn"><i class="fas fa-magic"></i> Generate Quiz</button>
+        </div>
+        <div id="quizQuestionsContainer" class="quiz-container"></div>
+        <div id="quizResult" class="quiz-result"></div>
+    </div>
+
+    <!-- ASSESSMENT PAGE -->
+    <div id="assessment" class="page">
+        <div class="page-header"><div class="header-badge"><i class="fas fa-chart-line"></i><span>Performance Tracking</span></div><h1>Assessment & Grading</h1><p>Automated grading and competency tracking</p></div>
+        <div class="assessment-grid"><div class="glass-card"><h3><i class="fas fa-robot"></i> AI Grader</h3><textarea id="essayInput" rows="6" placeholder="Paste student answer for AI grading..."></textarea><button class="primary-btn" onclick="gradeEssay()"><i class="fas fa-check-circle"></i> Grade Now</button><div id="gradingResult" class="grading-result"></div></div><div class="glass-card"><h3><i class="fas fa-tree"></i> Competency Tracking</h3><div id="competencyTable"></div></div></div>
+    </div>
+
+    <!-- ANALYTICS PAGE -->
+    <div id="analytics" class="page">
+        <div class="page-header"><div class="header-badge"><i class="fas fa-chart-pie"></i><span>Data Insights</span></div><h1>Learning Analytics</h1><p>Track your progress and identify areas for improvement</p></div>
+        <div class="analytics-stats"><div class="analytics-card glass-card"><div class="analytics-number" id="predictiveRisk">0%</div><div class="analytics-label">Dropout Risk</div></div><div class="analytics-card glass-card"><div class="analytics-number" id="engagementRate">0%</div><div class="analytics-label">Engagement Rate</div></div><div class="analytics-card glass-card"><div class="analytics-number" id="curriculumEfficacy">0%</div><div class="analytics-label">Curriculum Efficacy</div></div></div>
+        <div class="charts-container"><div class="chart-card glass-card"><h3>Performance Trend</h3><canvas id="performanceChart"></canvas></div><div class="chart-card glass-card"><h3>Subject Mastery Heatmap</h3><canvas id="heatmapChart"></canvas></div></div>
+    </div>
+
+    <!-- SETTINGS PAGE -->
+    <div id="settings" class="page">
+        <div class="page-header"><div class="header-badge"><i class="fas fa-cog"></i><span>Preferences</span></div><h1>Settings</h1><p>Customize your AfriTutor AI experience</p></div>
+        <div class="settings-container"><div class="glass-card"><h3><i class="fas fa-palette"></i> Appearance</h3><div class="setting-item"><label>Dark / Light Mode</label><label class="toggle"><input type="checkbox" id="darkModeToggle" checked><span class="slider"></span></label></div><div class="setting-item"><label>Font Size</label><select id="fontSizeSelect" class="form-input"><option value="small">Small</option><option value="medium" selected>Medium</option><option value="large">Large</option></select></div></div><div class="glass-card"><h3><i class="fas fa-language"></i> Language Preferences</h3><div class="setting-item"><label>AI Response Language</label><select id="languageSelect" class="form-input"><option value="english">English only</option><option value="amharic">Amharic only (አማርኛ)</option><option value="mixed" selected>Code-Switching (Recommended)</option></select></div></div><div class="glass-card"><h3><i class="fas fa-database"></i> Data & Privacy</h3><div class="setting-item"><label>Low Data Mode</label><label class="toggle"><input type="checkbox" id="dataSaverToggle" checked><span class="slider"></span></label></div><div class="setting-item"><label>Auto-Delete History (30 days)</label><label class="toggle"><input type="checkbox" id="autoDeleteToggle"><span class="slider"></span></label></div></div><div class="settings-actions"><button class="secondary-btn" id="resetSettingsBtn"><i class="fas fa-undo"></i> Reset to Defaults</button><button class="primary-btn" id="saveSettingsBtn"><i class="fas fa-save"></i> Save Changes</button></div></div>
+    </div>
+
+    <!-- ABOUT PAGE -->
+    <div id="about" class="page">
+        <div class="page-header"><div class="header-badge"><i class="fas fa-info-circle"></i><span>About Us</span></div><h1>About AfriTutor AI</h1><p>Built for Ethiopian students, by Ethiopian builders</p></div>
+        <div class="about-grid"><div class="glass-card"><div class="about-icon">🎯</div><h3>Our Mission</h3><p>Quality education for every Ethiopian student, in their mother tongue. No one left behind.</p></div><div class="glass-card"><div class="about-icon">🧠</div><h3>Technology</h3><p>Graph RAG + Multi-Agent AI + Ethiopian curriculum knowledge graph. Built for low-bandwidth.</p></div><div class="glass-card"><div class="about-icon">👥</div><h3>The Build 2026</h3><p>Pan-African team building across borders. Six weeks. Ship every week. Build in public.</p></div></div>
+    </div>
+
+    <footer class="footer"><div class="footer-content"><div class="footer-logo"><i class="fas fa-graduation-cap"></i><span>AfriTutor AI</span></div><div class="footer-links"><a href="#">Privacy Policy</a><a href="#">Terms of Use</a><a href="#">Contact</a></div><div class="footer-copyright"><p>© 2026 AfriTutor AI | Ethiopian New Curriculum | የኢትዮጵያ አዲስ ሥርዓተ ትምህርት</p></div></div></footer>
+</div>
+
+<!-- Subject Detail Modal -->
+<div id="subjectDetailModal" class="modal"><div class="modal-content"><div class="modal-header"><h2 id="modalSubjectTitle"></h2><button class="modal-close" onclick="closeSubjectModal()">&times;</button></div><div id="modalSubjectContent"></div><div class="modal-actions"><button class="primary-btn" onclick="startSubjectLesson()"><i class="fas fa-play"></i> Start Lesson</button><button class="secondary-btn" onclick="takeSubjectQuiz()"><i class="fas fa-puzzle-piece"></i> Take Quiz</button><button class="secondary-btn" onclick="downloadSubjectResource()"><i class="fas fa-download"></i> Download</button></div></div></div>
+
+<!-- Login Modal -->
+<div id="loginModal" class="modal"><div class="modal-content"><h2>Login to AfriTutor AI</h2><input type="email" id="loginEmail" class="form-input" placeholder="Email"><input type="password" id="loginPassword" class="form-input" placeholder="Password"><button class="primary-btn" id="doLoginBtn">Login</button><button class="secondary-btn" onclick="closeModals()">Cancel</button></div></div>
+
+<!-- Signup Modal -->
+<div id="signupModal" class="modal"><div class="modal-content"><h2>Create Account</h2><input type="text" id="signupName" class="form-input" placeholder="Full Name"><input type="email" id="signupEmail" class="form-input" placeholder="Email"><input type="password" id="signupPassword" class="form-input" placeholder="Password"><select id="signupGrade" class="form-input"><option value="grade6">Grade 6</option><option value="grade7">Grade 7</option><option value="grade8">Grade 8</option><option value="grade9">Grade 9</option><option value="grade10">Grade 10</option><option value="natural">Grade 11-12 Natural</option><option value="social">Grade 11-12 Social</option><option value="university">University Freshman</option></select><button class="primary-btn" id="doSignupBtn">Sign Up</button><button class="secondary-btn" onclick="closeModals()">Cancel</button></div></div>
+
+<script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.128.0/build/three.module.js"}}</script>
+<script type="module" src="script.js"></script>
+</body>
+</html>

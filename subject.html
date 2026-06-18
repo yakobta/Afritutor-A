@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="AfriTutor AI - Complete Ethiopian New Curriculum Subjects from Grade 6 to University Freshman">
+    <meta name="keywords" content="Ethiopian curriculum, subjects, grades 6-12, university, education, Ethiopia">
+    <meta name="author" content="AfriTutor AI">
+    <title>AfriTutor AI - Ethiopian New Curriculum | Complete Subjects</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Main Styles -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="subject-style.css">
+</head>
+<body>
+
+<div class="ethiopia-bar">
+    <div class="green"></div>
+    <div class="yellow"></div>
+    <div class="red"></div>
+</div>
+
+<div id="canvas-container"></div>
+
+<div class="subjects-app-wrapper">
+    <!-- Navigation Bar -->
+    <nav class="navbar subjects-navbar">
+        <div class="logo">
+            <div class="logo-icon"><i class="fas fa-graduation-cap"></i></div>
+            <span class="logo-text">AfriTutor AI</span>
+            <span class="logo-badge">Subjects</span>
+        </div>
+        <div class="nav-links">
+            <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Home</a>
+            <a href="index.html#tutor" class="nav-link"><i class="fas fa-robot"></i> AI Tutor</a>
+            <a href="subject.html" class="nav-link active"><i class="fas fa-book"></i> Subjects</a>
+            <a href="index.html#resources" class="nav-link"><i class="fas fa-database"></i> Resources</a>
+            <a href="index.html#quizzes" class="nav-link"><i class="fas fa-puzzle-piece"></i> Quizzes</a>
+            <a href="index.html#settings" class="nav-link"><i class="fas fa-cog"></i> Settings</a>
+        </div>
+        <div class="user-menu">
+            <button class="login-btn" id="loginBtn"><i class="fas fa-sign-in-alt"></i> Login</button>
+            <button class="signup-btn" id="signupBtn"><i class="fas fa-user-plus"></i> Sign Up</button>
+            <div class="user-avatar" id="userAvatar" style="display:none"><i class="fas fa-user"></i><span class="user-name" id="userNameDisplay"></span></div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="subjects-hero">
+        <div class="subjects-hero-content">
+            <h1 class="gradient-text-ethiopia">📚 Ethiopian New Curriculum</h1>
+            <p>Complete subject breakdown from Grade 6 to University Freshman • Ministry of Education, Ethiopia</p>
+            <div class="hero-stats-mini">
+                <div class="hero-stat-mini"><span class="stat-number">200+</span><span>Subjects</span></div>
+                <div class="hero-stat-mini"><span class="stat-number">7</span><span>Grade Levels</span></div>
+                <div class="hero-stat-mini"><span class="stat-number">2</span><span>Streams</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Grade Level Navigation -->
+    <div class="grade-nav">
+        <button class="grade-nav-btn" data-grade="grade6">📘 Grade 6</button>
+        <button class="grade-nav-btn" data-grade="grade7">📙 Grade 7</button>
+        <button class="grade-nav-btn" data-grade="grade8">📙 Grade 8</button>
+        <button class="grade-nav-btn" data-grade="grade9">📕 Grade 9</button>
+        <button class="grade-nav-btn" data-grade="grade10">📕 Grade 10</button>
+        <button class="grade-nav-btn" data-grade="natural">🔬 Natural Science</button>
+        <button class="grade-nav-btn" data-grade="social">🌍 Social Science</button>
+        <button class="grade-nav-btn" data-grade="university">🎓 University Freshman</button>
+    </div>
+
+    <!-- Quick Filter Bar -->
+    <div class="quick-filter-bar">
+        <button class="quick-filter active" data-filter="all">📚 All Subjects</button>
+        <button class="quick-filter" data-filter="core">⭐ Core Subjects</button>
+        <button class="quick-filter" data-filter="science">🔬 Sciences</button>
+        <button class="quick-filter" data-filter="social-studies">🌍 Social Studies</button>
+        <button class="quick-filter" data-filter="language">🗣️ Languages</button>
+        <button class="quick-filter" data-filter="arts">🎨 Arts & PE</button>
+        <button class="quick-filter" data-filter="technology">💻 Technology</button>
+    </div>
+
+    <!-- Main Subjects Container -->
+    <div class="subjects-main-container" id="subjectsMainContainer"></div>
+
+    <!-- Curriculum Guide Section -->
+    <div class="curriculum-guide glass-card">
+        <div class="guide-header">
+            <i class="fas fa-chalkboard-user"></i>
+            <h3>Curriculum Implementation Guide</h3>
+        </div>
+        <div class="guide-content">
+            <div class="guide-section">
+                <h4><i class="fas fa-clock"></i> Weekly Period Allocation</h4>
+                <div class="allocation-table">
+                    <div class="table-row"><span>Mother Tongue / English</span><span>8 periods/week</span></div>
+                    <div class="table-row"><span>Mathematics</span><span>6 periods/week</span></div>
+                    <div class="table-row"><span>Science (General/Physics/Chem/Bio)</span><span>6 periods/week</span></div>
+                    <div class="table-row"><span>Social Studies / History / Geography</span><span>4 periods/week</span></div>
+                    <div class="table-row"><span>Citizenship / Moral Education</span><span>2 periods/week</span></div>
+                    <div class="table-row"><span>IT / CTE / PVA / HPE</span><span>2 periods each/week</span></div>
+                </div>
+            </div>
+            <div class="guide-section">
+                <h4><i class="fas fa-star"></i> Assessment Weight</h4>
+                <div class="allocation-table">
+                    <div class="table-row"><span>Continuous Assessment</span><span>40%</span></div>
+                    <div class="table-row"><span>Mid-Exam</span><span>20%</span></div>
+                    <div class="table-row"><span>Final Exam</span><span>40%</span></div>
+                </div>
+            </div>
+            <div class="guide-section">
+                <h4><i class="fas fa-language"></i> Language of Instruction</h4>
+                <p>Primary medium: English for science and technology subjects.<br>Mother Tongue/Amharic for social sciences and language arts.<br>Code-switching encouraged for better understanding.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="subjects-footer">
+        <div class="footer-content">
+            <div class="footer-logo"><i class="fas fa-graduation-cap"></i><span>AfriTutor AI</span></div>
+            <div class="footer-links"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Contact</a><a href="#">About</a></div>
+            <div class="footer-copyright"><p>© 2026 AfriTutor AI | Ethiopian New Curriculum | የኢትዮጵያ አዲስ ሥርዓተ ትምህርት</p></div>
+        </div>
+    </footer>
+</div>
+
+<!-- Subject Detail Modal -->
+<div id="subjectDetailModal" class="modal">
+    <div class="modal-content modal-large">
+        <div class="modal-header">
+            <h2 id="modalSubjectTitle"></h2>
+            <button class="modal-close" onclick="closeSubjectModal()">&times;</button>
+        </div>
+        <div id="modalSubjectContent"></div>
+        <div class="modal-actions">
+            <button class="primary-btn" onclick="startLesson()"><i class="fas fa-play"></i> Start Lesson</button>
+            <button class="secondary-btn" onclick="takeQuiz()"><i class="fas fa-puzzle-piece"></i> Take Quiz</button>
+            <button class="secondary-btn" onclick="downloadTextbook()"><i class="fas fa-download"></i> Download Textbook</button>
+            <button class="secondary-btn" onclick="watchVideo()"><i class="fas fa-video"></i> Watch Video</button>
+        </div>
+    </div>
+</div>
+
+<!-- Login Modal -->
+<div id="loginModal" class="modal"><div class="modal-content"><h2>Login</h2><input type="email" id="loginEmail" class="form-input" placeholder="Email"><input type="password" id="loginPassword" class="form-input" placeholder="Password"><button class="primary-btn" id="doLoginBtn">Login</button><button class="secondary-btn" onclick="closeModals()">Cancel</button></div></div>
+
+<!-- Signup Modal -->
+<div id="signupModal" class="modal"><div class="modal-content"><h2>Sign Up</h2><input type="text" id="signupName" class="form-input" placeholder="Full Name"><input type="email" id="signupEmail" class="form-input" placeholder="Email"><input type="password" id="signupPassword" class="form-input" placeholder="Password"><button class="primary-btn" id="doSignupBtn">Sign Up</button><button class="secondary-btn" onclick="closeModals()">Cancel</button></div></div>
+
+<script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.128.0/build/three.module.js"}}</script>
+<script type="module" src="subject.js"></script>
+</body>
+</html>
